@@ -1,0 +1,30 @@
+{% extends 'shopadmin/main.html' %}
+
+{% block content %}
+	<h4>Shop detail</h4>
+	<h1>{{ shop.title }}</h1>
+	<hr>
+	<div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Product id</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Price</th>
+                    </tr>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.product.product_id }}</td>
+							<td>{{ order.product.title }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>{{ order.product.price }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

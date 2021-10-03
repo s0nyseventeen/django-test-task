@@ -1,0 +1,45 @@
+{% extends 'shopadmin/main.html' %}
+
+{% block content %}
+
+	<br>
+	<div class="row">
+		<div class="col-md">
+			<div class="card card-body">
+				<h4>Shops: {{ total_shops }}</h4>
+			</div>
+			<div class="row" >
+				<div class="col">
+					<div class="card card-body">
+						<form method="get">
+							{{ my_filter.form }}
+							<button class="btn btn-primary" type="submit">Search</button>	
+						</form>	
+					</div>					
+				</div>	
+			</div>
+		</div>
+	</div>
+	<div class="card card-body">
+		<table class="table">
+			<tr>
+				<th></th>
+				<th>Title</th>
+				<th>Descriprion</th>
+			</tr>
+			{% for shop in shops %}
+				<tr>
+					<td><a class="btn btn-sm btn-primary" href="{% url 'shop_detail' shop.shop_id %}">View</a></td>
+					<td>
+						{{ shop.title }}
+						<br>
+						<img class="shop_photo" src="{{ shop.imagetoupload.url }}">
+					</td>
+					<td>{{ shop.description }}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_shop' shop.shop_id %}">Update</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+{% endblock content%}

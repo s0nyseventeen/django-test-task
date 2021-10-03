@@ -1,0 +1,22 @@
+{% extends 'shopadmin/main.html' %}
+
+{% block content %}
+    <br>
+	<h4>{{ product.title }}</h4>
+	<hr>
+	<div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                {% for photo in photos %}
+                    {% if forloop.counter == 1 %}
+                        <p>{{ photo.images }}</p>
+                    {% endif %}
+                {% endfor %}
+                <p>id: {{ product.product_id }}</p>
+                <p>description: {{ product.description }}</p>
+                <p>price: {{ product.price }}</p>
+                <p>status: {{ product.active }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
